@@ -32,23 +32,135 @@ public class WeatherGenerator {
     public static int[] oneMonthGenerator(double longitude, double latitude, 
     int month, double[][] drywet, double[][] wetwet) {
 
-        // WRITE YOUR CODE HERE
+    int []weather;
+    double dayOneWeather = StdRandom.uniform(0,1)
+    if (dayOneWeather < 0.49)
+    {
+     int dayOne = 1;
+     weather [1] = 1;
     }
-
+     else
+     {
+      int dayOne = 2;
+      weather[1] = 2;
+     }
+    }
+ 
+    if (dayOne = 1)
+    {
+     for (i = 2; i < [month]numberOfDaysInMonth; i++)
+     {
+      wetwet[j][i] = chanceOfWet;
+      double rand = StdRandom.uniform(0,1)
+       if (rand < chanceOfWet)
+       {
+        weather[j] = 1;
+       }
+       else
+       {
+        weather[j] = 2;
+       }
+     }
+     else
+     {
+      for (i = 2; i < [month]numberOfDaysInMonth; i++)
+     {
+      drywet[j][i] = chanceOfWet;
+      double rand = StdRandom.uniform(0,1)
+       if (rand < chanceOfWet)
+       {
+        weather[j] = 1;
+       }
+       else
+       {
+        weather[j] = 2;
+       }
+     }
+     }
+     for (z = 1; z < [month]numberOfDaysInMonth; z++)
+     {
+     StdOut.println(weather[z]);
+     }
+     }
     /*
      * Returns the number of mode (WET or DRY) days in forecast.
      */ 
     public static int numberOfWetDryDays (int[] forecast, int mode) {
-        
-        // WRITE YOUR CODE HERE
+     int wetCounter;
+     int dryCounter;
+        for (i = 1; i < [month]numberOfDaysInMonth; i++)
+        {
+         if (weather[j] == 1)
+         {
+          wetCounter = wetCounter + 1;
+         }
+         else
+         {
+          dryCounter = dryCounter + 1;
+         }
+        }
+       if (dryCounter > wetCounter)
+       {
+        StdOut.println("There are " + dryCounter + " dry days in forecast");
+       }
+      else 
+      {
+       StdOut.println("There are " + wetCounter + " wet days in forecast");
+      }
     }
 
     /*
      * Returns the longest number of consecutive mode (WET or DRY) days in forecast.
      */ 
     public static int lengthOfLongestSpell (int[] forecast, int mode) {
-
-        // WRITE YOUR CODE HERE
+     int streak = 0;
+        for (int i = 1; i < [month]numberOfDaysInMonth; i++)
+        {
+         if (weather[i] = 1)
+         {
+          dryCounter = dryCounter + 1;
+         }
+         else
+         {
+          if ( streak < dryCounter )
+          {
+           streak = dryCounter;
+           dryCounter = 0;
+          }
+          else
+          {
+          dryCounter = 0;
+          }
+          }
+        }
+     
+     for (int x = 1; x < [month]numberOfDaysInMonth; x++)
+        {
+         if (weather[x] = 1)
+         {
+          wetCounter = wetCounter + 1;
+         }
+         else
+         {
+          if ( streak < wetCounter )
+          {
+           streak = wetCounter;
+           wetCounter = 0;
+          }
+          else
+          {
+          wetCounter = 0;
+          }
+          }
+        }
+     if (wetCounter < dryCounter)
+     {
+      StdOut.println("There are " + dryCounter + " consecutive dry days");
+     }
+     else
+     {
+      StdOut.println("There are " + wetCounter + " consecutive wet days");
+     }
     }
 
     /*
@@ -128,12 +240,23 @@ public class WeatherGenerator {
         populateTransitionProbabilitiesArrays(drywet, wetwet, numberOfRows);
 
         /*** WRITE YOUR CODE BELLOW THIS LINE. DO NOT erase any of the lines above. ***/
-
         // Read command line inputs 
         double longitute = Double.parseDouble(args[0]);
         double latitude  = Double.parseDouble(args[1]);
         int    month     = Integer.parseInt(args[2]);
 
+        for (int i = 1; i < numberOfRows; i++) 
+        {
+         if ( i == latitude);
+         {
+          for (int j = 1; j < numberOfRows; j++)
+          {
+           if (j == longitude);
+           int rowResult = j;
+          }
+         }
+        }
+        
         int[] forecast = oneMonthGenerator(longitute, latitude, month, drywet, wetwet);
         int drySpell = lengthOfLongestSpell(forecast, DRY);
         int wetSpell = lengthOfLongestSpell(forecast, WET);
